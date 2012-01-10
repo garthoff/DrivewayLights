@@ -138,10 +138,8 @@ void startupflash() {
 
 void setup() {
 
-	 //if (SERIALDEBUG) {	     // If we want to see the pin values for debugging...
-		  Serial.begin(57600);  // ...set up the serial ouput on 0004 style
-		  Serial.println("\n[DriveWayLights]");
-	 //}
+	 Serial.begin(57600);  // ...set up the serial ouput on 0004 style
+	 Serial.println("\n[DriveWayLights]");
 
 	 // Initialize the RF12 module. Node ID 30, 868MHZ, Network group 5
 	 // rf12_initialize(30, RF12_868MHZ, 5);
@@ -165,10 +163,6 @@ void setup() {
 	 rf12_easyInit(0);
 
 	 pinMode(FrontButtonPin, INPUT);    // declare pushbutton as input
-
-	 //FrontTargetPower = 255;
-	 //MidTargetPower = 255;
-	 //RearTargetPower = 255;
 
 	 dimmer.setReg(DimmerPlug::MODE1, 0x00);     // normal
 	 dimmer.setReg(DimmerPlug::MODE2, 0x14);     // inverted, totem-pole
@@ -370,23 +364,10 @@ void loop() {
 
 	 if (SERIALDEBUG) { Serial.print("Dimming : "); Serial.print(0 + dimming); }
     if (SERIALDEBUG) { Serial.print(", Timestored : "); Serial.println(0 + timestored); }
-	 /* Serial.print(FrontPower);
-		 Serial.print(":");
-		 Serial.print(MidPower);
-		 Serial.print(":");
-		 Serial.println(RearPower);
-	  */ 
 
 	 dimmer.setReg(DimmerPlug::PWM0, (int)FrontPower);
 	 dimmer.setReg(DimmerPlug::PWM1, (int)MidPower);
 	 dimmer.setReg(DimmerPlug::PWM2, (int)RearPower);
-
-	 /*if (FrontPower != FrontTargetPower || MidPower != MidTargetPower || RearPower != RearTargetPower) {
-		  FrontPower = 1;
-		  MidPower = 1;
-		  RearPower = 1;
-	 }*/
-
 
 	 // treat each group of 4 LEDS as RGBW combinations
 	 //set4(DimmerPlug::PWM0, w, b, g, r);
