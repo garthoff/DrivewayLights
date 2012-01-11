@@ -40,9 +40,9 @@ long elapsedMillis = 0;	   // elapsed time
 long storedMillis = 5;
 
 boolean timestored = 0;
-boolean FrontButtonState = 0;	// Front button state
-boolean RearButtonState = 0; // Rear button state
-boolean dimming = false;
+boolean FrontButtonState = 0;	  // Front button state
+boolean RearButtonState = 0;	  // Rear button state
+boolean dimming = false;		  // Used to record if we're in the middle of dimming or not
 
 // Initial target power states
 int FrontTargetPower = 0;
@@ -56,15 +56,13 @@ float MidPower = 0;
 float RearPower = 0;
 
 float FrontIncrement = 1.02;
-//float FrontIncrement = 0.02;
 float MidIncrement = 1.015;
 float RearIncrement = 1.01;
 float FrontDecrement = 1.015;
 float MidDecrement = 1.02;
 float RearDecrement = 1.03;
 
-// long offtimeout = 240000;		// Number of milliseconds to stay on for after being turned on
-long offtimeout = 300000;		// 60 seconds
+long offtimeout = 300000;		// 5 minutes
 
 PortI2C myBus (3);
 DimmerPlug dimmer (myBus, 0x40);
