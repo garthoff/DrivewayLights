@@ -24,8 +24,7 @@ http://lodge.glasgownet.com
 */
 
 
-#include <Ports.h>
-#include <RF12.h>
+#include <JeeLib.h>
 
 // has to be defined because we're using the watchdog for low-power waiting
 ISR(WDT_vect) { Sleepy::watchdogEvent(); }
